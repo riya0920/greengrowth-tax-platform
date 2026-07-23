@@ -1,5 +1,9 @@
 # Meridian — AI-Powered Tax Platform (Case Study Prototype)
 
+> The in-app firm **"Meridian Tax Partners"** and every client, document, and dollar figure are
+> fictional sample data invented for this prototype. (The repo and URL say "greengrowth" only
+> because that's where it's hosted.)
+
 A clickable, greenfield prototype for the AI Engineer case study. It covers four
 interlocking challenges as **one continuous workflow** rather than four disconnected screens:
 
@@ -16,9 +20,17 @@ from, Trustworthy AI (10) shows why the model chose it and how to correct it, th
 (08) makes "can I change this?" unambiguous, and the dashboard (07) turns all of it into "what do I
 do next." I deliberately went deep on the AI-facing challenges rather than broad across all ten.
 
+**No specific challenges were assigned to me**, so I selected the four most central to the AI
+Engineer role (transparency, explainability, and correctability of AI output) and went deep.
+Elements of **04** (deep-linking to a specific field, breadcrumbs, and context preservation while
+moving between dashboard and return) and **06** (a shared stage vocabulary that carries a separate
+client-facing label — hover any stage pill to see what the client sees) also appear throughout,
+built on the same data model.
+
 ## The 60-second demo path
 1. **Dashboard** answers *"what should I work on right now?"* — a priority queue ranked by a
-   transparent score, with a "why" on every row and filters (On me / AI flags / Blocked).
+   transparent score; every row shows the "why," with filters (On me / AI flags / Blocked). The
+   header search jumps straight to any return or field.
 2. Click the **"Confirm property tax amount (SALT cap risk)"** task. It deep-links straight to
    that exact field in the return.
 3. In the **return review**, the flagged field (`State & local property taxes`, 72% confidence)
@@ -41,6 +53,8 @@ trace each contribution.
   mock dataset: urgency + deadline proximity + AI-flag boost − "waiting on client" penalty.
 - Interactive state: selecting fields, highlighting the matching source box, verify/correct
   actions that mutate progress, filters, scope toggles.
+- **Global search** (press `/`) — really filters the 6 returns and their fields and deep-links to
+  the exact one you pick. The affordance is honest here too: it looks searchable and it is.
 - A consistent **affordance system** (Challenge 08): six interaction states — Clickable / Editable /
   AI-generated / Verified / Needs-approval / Read-only — with one shared visual grammar, proven
   across three different screens on `/system`. Editable fields are genuinely editable; read-only
@@ -74,8 +88,10 @@ npm run dev      # http://localhost:5173
 npm run build    # production build
 ```
 
-Not covered (deliberately out of scope): role-switching (05), collaboration threads (02), and
-client onboarding (03) — the data model is structured to support them later.
+Partial coverage: **04** (deep-linking, breadcrumbs, context preservation) and **06** (shared stage
+vocabulary with client-facing labels) appear throughout. Deliberately out of scope: role-switching
+(05), collaboration threads (02), and client onboarding (03) — the data model is structured to
+support them later.
 
 ## Walkthrough video script (~90 seconds)
 

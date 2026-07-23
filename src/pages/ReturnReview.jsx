@@ -93,7 +93,15 @@ export default function ReturnReview() {
         <span className="font-semibold">{base.client}</span>
         <span className="text-ink-500">· {base.entity}</span>
         <span className="ml-auto flex items-center gap-2">
-          <span className="pill bg-brand-50 text-brand-700 capitalize">{STAGES[idx].label}</span>
+          <span
+            className="pill bg-brand-50 text-brand-700 capitalize"
+            title={`Client sees: “${STAGES[idx].clientLabel}”`}
+          >
+            {STAGES[idx].label}
+          </span>
+          <span className="hidden text-[11px] text-ink-300 md:inline">
+            client sees “{STAGES[idx].clientLabel}”
+          </span>
           <span className="text-xs text-ink-500">Due {base.dueDate}</span>
         </span>
       </div>

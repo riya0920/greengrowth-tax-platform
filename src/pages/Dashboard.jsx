@@ -60,6 +60,9 @@ export default function Dashboard() {
     return r.filter((t) => t.kind === filter);
   }, [myTasks, filter]);
 
+  // Stats + greeting are computed from the UNFILTERED task list so the queue
+  // filter never silently changes the headline counts.
+  const needReview = myTasks.filter((t) => t.owner === "preparer").length;
   const aiFlags = myTasks.filter((t) => t.kind === "ai_flag").length;
   const blocked = myTasks.filter((t) => t.kind === "blocked" || t.kind === "waiting").length;
   const dueSoon = rankTasks(myTasks).filter((t) => t.daysToDue <= 2).length;
@@ -71,7 +74,7 @@ export default function Dashboard() {
         <div>
           <h1 className="text-2xl font-bold">Good morning, Riya</h1>
           <p className="mt-1 text-sm text-ink-500">
-            You have <b className="text-ink-900">{ranked.filter((t) => t.owner === "preparer").length} things</b> that
+            You have <b className="text-ink-900">{needReview} things</b> that
             need you today. Start at the top — it's already sorted by priority.
           </p>
         </div>
@@ -92,7 +95,7 @@ export default function Dashboard() {
 
       {/* Stat strip */}
       <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
-        <Stat label="Need my review" value={ranked.filter((t) => t.owner === "preparer").length} Icon={UserRound} />
+        <Stat label="Need my review" value={needReview} Icon={UserRound} />
         <Stat label="Due within 48h" value={dueSoon} tone="warn" Icon={Clock} />
         <Stat label="AI wants a look" value={aiFlags} tone="ai" Icon={Sparkles} />
         <Stat label="Blocked / waiting" value={blocked} tone="danger" Icon={Ban} />
@@ -217,7 +220,10 @@ export default function Dashboard() {
                       <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-100">
                         <div className="h-full rounded-full bg-brand-500" style={{ width: `${pct}%` }} />
                       </div>
-                      <span className="text-[11px] font-medium capitalize text-ink-500">
+                      <span
+                        className="text-[11px] font-medium capitalize text-ink-500"
+                        title={`Client sees: “${STAGES[idx].clientLabel}”`}
+                      >
                         {STAGES[idx].label}
                       </span>
                     </div>
@@ -232,7 +238,7 @@ export default function Dashboard() {
             </div>
             <p className="mt-1 text-xs leading-relaxed text-ink-500">
               Ranked by a transparent score: urgency + how close the deadline is + whether the AI flagged something for
-              a human. Work waiting on clients is de-prioritized since it's not on you. Hover any row to see the "why."
+              a human. Work waiting on clients is de-prioritized since it's not on you. Every row shows the "why."
             </p>
           </div>
         </section>
