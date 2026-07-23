@@ -206,7 +206,12 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
                   </div>
                   <div className="flex gap-2">
                     <button
-                      onClick={() => confirm(Number(draft) || field.value)}
+                      onClick={() => {
+                        const n = Number(draft);
+                        // keep the old value only if the draft is blank/NaN —
+                        // a legitimate 0 must save as 0, not fall through.
+                        confirm(draft.trim() === "" || Number.isNaN(n) ? field.value : n);
+                      }}
                       className="btn-primary flex-1 justify-center"
                     >
                       Save correction

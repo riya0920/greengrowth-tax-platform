@@ -1,5 +1,8 @@
 # Meridian — AI-Powered Tax Platform (Case Study Prototype)
 
+**Live demo:** https://greengrowth-tax-platform.vercel.app — best viewed at desktop width (≥1024px;
+the left nav collapses on mobile).
+
 > The in-app firm **"Meridian Tax Partners"** and every client, document, and dollar figure are
 > fictional sample data invented for this prototype. (The repo and URL say "greengrowth" only
 > because that's where it's hosted.)
@@ -68,6 +71,8 @@ trace each contribution.
   and warnings are authored, not inferred.
 - **No backend / auth.** All state is in-memory and resets on refresh. Six sample returns, six
   tasks, five source documents.
+- **Demo clock pinned to Mar 18, 2026** (`rankTasks` in `src/data/aiEngine.js`) so due-date math
+  ("Due in 3d," overdue boosts) stays deterministic regardless of when you open it.
 
 ## Key design decisions
 - **Traceability is a chain, not a link.** Every number connects field -> value -> document ->
