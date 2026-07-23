@@ -98,41 +98,41 @@ vocabulary with client-facing labels) appear throughout. Deliberately out of sco
 (05), collaboration threads (02), and client onboarding (03) — the data model is structured to
 support them later.
 
-## Walkthrough video script (~90 seconds)
+## Walkthrough video script
 
-> Screen-record while narrating. Start on the Dashboard at 1440px wide.
+> Screen-record while narrating. Start on the Dashboard at a fixed window width (≥1024px).
 
-**[0:00–0:15] Dashboard — "what do I work on now?"**
-"This is the CPA's landing page. Instead of a list, it's a priority queue — ranked by a
-transparent score: urgency, deadline proximity, and whether the AI flagged something for a human.
-Every row shows *why* it's ranked where it is, and work waiting on clients is de-prioritized since
-it's not on me."
+**Dashboard — "what do I work on now?"**
+"This is Meridian, the CPA's home base. Instead of a flat list of returns, it's a priority queue —
+ranked by a transparent score: urgency, deadline proximity, and whether the AI flagged something
+for a human. Every row shows *why* it's ranked where it is, and anything waiting on the client gets
+pushed down, because it's not my job yet."
 
-**[0:15–0:25] Deep-link into the work**
-"I'll take the top AI flag — 'Confirm property tax amount, SALT-cap risk.' Notice it takes me
-straight to that exact field in the return, not just the return."
+**Search — honest, and it deep-links**
+"A lot of prototypes have a search bar that does nothing. This one's real. I'll search for the
+1098 document itself, and it takes me straight to the exact number that document backs."
 
-**[0:25–0:50] Traceability — every number to its source**
-"Here's the core of the product. Left: the return line items. Middle: the actual source
-document — this property-tax figure came from Box 10 of the 1098, and it's highlighted. Right: the
-AI panel. It tells me the value is only 72% confidence, and *why* — escrow-reported taxes can
-differ from taxes actually paid. I can see the exact calculation, and one click jumps me to the
-source. Let me show a harder one — Wages. That number is summed from *two* W-2s, and I can trace
-each contribution."
+**Traceability — every number to its source**
+"This is the core of the product. Left: the return line items. Middle: the actual source
+document, with the exact box the number came from highlighted. Right: where it came from and how it
+was calculated — a full chain of custody. And it holds up on harder cases: Wages here is summed
+from *two* separate W-2s, and I can trace each one back to its own source, with the model's
+reasoning one click away."
 
-**[0:50–1:05] Trustworthy AI — correction without breaking flow**
-"'Why did the AI do this?' expands the full reasoning — progressive disclosure, so I'm never
-buried in detail. If it's right, I verify; if not, I fix it inline. Watch — I verify, progress
-updates, the row is now human-verified, and the AI acknowledges my correction. The human stays in
-control."
+**Trustworthy AI — correction without breaking flow**
+"Every AI value carries a confidence level, and I can open its full reasoning — progressive
+disclosure, and it labels itself simulated so I always know what's real. If it's right, I verify —
+the progress bar moves and the row flips to human-verified. If it's wrong, I fix it inline. The
+human always stays in control."
 
-**[1:05–1:25] Interaction system — clickable vs. editable**
-"One more: on a tax return, AI output, client answers, calculations, and reviewer notes all sit
-side by side. This is the single visual language that keeps them legible — six states, one rule
-set. Dashed border means I can type; a colored left-bar tells me who produced the value; solid grey
-means locked. Same vocabulary across every screen — the affordance is honest: what looks editable
-actually is."
+**Interaction system — clickable vs. editable**
+"On a real return, AI output, client answers, calculations, and locked totals all sit side by
+side. This is the single visual language that keeps them legible — a dashed border means I can type,
+a colored bar tells me who produced the value, solid grey means locked. Same rules on every screen:
+what looks editable actually is — I can click this field and type into it."
 
-**[1:25–1:30] Close**
-"Everything you saw is a real, clickable frontend on hardcoded data and simulated AI — the README
-spells out exactly what's real versus faked. Thanks for watching."
+**Close**
+"Everything here is a real, clickable frontend on mock data with simulated AI — the README spells
+out exactly what's real versus faked. I focused on the four challenges most central to this role:
+traceability, trustworthy AI, the interaction system, and the actionable dashboard. Thanks for
+watching."
