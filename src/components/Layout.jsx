@@ -1,21 +1,38 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LayoutDashboard, FileText, Sparkles, Search, Palette, CornerDownLeft } from "lucide-react";
-import { FIRM, PREPARERS, RETURNS } from "../data/mockData";
+import { FIRM, PREPARERS, RETURNS, DOCUMENTS } from "../data/mockData";
 
 const me = PREPARERS.u_riya;
 
-// Flatten returns + their fields into one searchable index. Small on purpose —
-// 6 returns, 7 fields — so a plain substring match is plenty.
-const SEARCH_INDEX = Object.values(RETURNS).flatMap((r) => [
-  { kind: "Return", title: r.client, sub: r.entity, to: `/return/${r.id}` },
-  ...(r.fields || []).map((f) => ({
-    kind: "Field",
-    title: f.label,
-    sub: `${r.client} · line ${f.line}`,
-    to: `/return/${r.id}?field=${f.id}`,
-  })),
-]);
+// Map each source document to the first return + field that cites it, so a
+// document hit deep-links straight to the number it backs.
+const DOC_LINK = {};
+Object.values(RETURNS).forEach((r) =>
+  (r.fields || []).forEach((f) =>
+    (f.sources || []).forEach((s) => {
+      if (!DOC_LINK[s.doc]) DOC_LINK[s.doc] = `/return/${r.id}?field=${f.id}`;
+    })
+  )
+);
+
+// Flatten returns, their fields, and source documents into one searchable
+// index. Small on purpose — 6 returns, 7 fields, 5 docs — so a plain substring
+// match is plenty, and every hit deep-links somewhere real.
+const SEARCH_INDEX = [
+  ...Object.values(RETURNS).flatMap((r) => [
+    { kind: "Return", title: r.client, sub: r.entity, to: `/return/${r.id}` },
+    ...(r.fields || []).map((f) => ({
+      kind: "Field",
+      title: f.label,
+      sub: `${r.client} · line ${f.line}`,
+      to: `/return/${r.id}?field=${f.id}`,
+    })),
+  ]),
+  ...Object.values(DOCUMENTS)
+    .filter((d) => DOC_LINK[d.id])
+    .map((d) => ({ kind: "Document", title: d.title, sub: d.filename, to: DOC_LINK[d.id] })),
+];
 
 // Global search — the affordance is honest: it looks interactive and it is.
 function GlobalSearch() {
