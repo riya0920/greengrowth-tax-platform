@@ -71,7 +71,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
         </div>
       ) : (
         <div className="flex-1 space-y-4 overflow-auto p-4">
-          {/* 1. The verdict — the one thing to read */}
+          {/* 1. The verdict: the one thing to read */}
           <div
             className={`rounded-lg p-3 ${
               locked
@@ -101,7 +101,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
             {locked && <div className="mt-2 text-xs text-ink-500">{field.lockReason}</div>}
           </div>
 
-          {/* 2. Evidence — click to jump to the source (Challenge 01 bridge) */}
+          {/* 2. Evidence: click to jump to the source (Challenge 01 bridge) */}
           {field.sources.length > 0 && (
             <div>
               <div className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-ink-700">
@@ -130,7 +130,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
             </div>
           )}
 
-          {/* 3. The math — how source became the field value (Challenge 01) */}
+          {/* 3. The math: how source became the field value (Challenge 01) */}
           {field.transform && (
             <div>
               <div className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-ink-700">
@@ -163,7 +163,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
             </div>
           )}
 
-          {/* 4. Reasoning — full model rationale, hidden by default */}
+          {/* 4. Reasoning: full model rationale, hidden by default */}
           <div>
             <button
               onClick={() => setShowReasoning((v) => !v)}
@@ -182,7 +182,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
             )}
           </div>
 
-          {/* 5. Correction workflow — accept or fix without leaving (Challenge 10) */}
+          {/* 5. Correction workflow: accept or fix without leaving (Challenge 10) */}
           {!locked && (
             <div className="border-t border-slate-200 pt-3">
               {ack ? (
@@ -208,7 +208,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
                     <button
                       onClick={() => {
                         const n = Number(draft);
-                        // keep the old value only if the draft is blank/NaN —
+                        // keep the old value only if the draft is blank/NaN:
                         // a legitimate 0 must save as 0, not fall through.
                         confirm(draft.trim() === "" || Number.isNaN(n) ? field.value : n);
                       }}
@@ -224,7 +224,7 @@ export default function AiPanel({ field, onFocusSource, onVerify, onEdit }) {
               ) : (
                 <div className="flex gap-2">
                   <button onClick={() => confirm(field.aiValue)} className="btn-primary flex-1 justify-center">
-                    <ShieldCheck size={15} /> Looks right — verify
+                    <ShieldCheck size={15} /> Looks right: verify
                   </button>
                   <button
                     onClick={() => {

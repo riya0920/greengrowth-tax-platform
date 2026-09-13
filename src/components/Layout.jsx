@@ -17,7 +17,7 @@ Object.values(RETURNS).forEach((r) =>
 );
 
 // Flatten returns, their fields, and source documents into one searchable
-// index. Small on purpose — 6 returns, 7 fields, 5 docs — so a plain substring
+// index. Small on purpose: 6 returns, 7 fields, 5 docs, so a plain substring
 // match is plenty, and every hit deep-links somewhere real.
 const SEARCH_INDEX = [
   ...Object.values(RETURNS).flatMap((r) => [
@@ -34,7 +34,7 @@ const SEARCH_INDEX = [
     .map((d) => ({ kind: "Document", title: d.title, sub: d.filename, to: DOC_LINK[d.id] })),
 ];
 
-// Global search — the affordance is honest: it looks interactive and it is.
+// Global search. The affordance is honest: it looks interactive and it is.
 function GlobalSearch() {
   const nav = useNavigate();
   const inputRef = useRef(null);
@@ -143,7 +143,7 @@ export default function Layout({ children }) {
   const onReview = loc.pathname.startsWith("/return");
   return (
     <div className="flex h-full">
-      {/* Sidebar — global navigation */}
+      {/* Sidebar: global navigation */}
       <aside className="hidden w-60 shrink-0 flex-col border-r border-slate-200 bg-white p-3 md:flex">
         <div className="flex items-center gap-2 px-2 py-3">
           <div className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-white">
@@ -156,7 +156,7 @@ export default function Layout({ children }) {
         </div>
         <nav className="mt-2 flex flex-col gap-1">
           <NavItem to="/" icon={LayoutDashboard} label="Dashboard" />
-          <NavItem to="/return/r_chen" icon={FileText} label="Chen — Return" />
+          <NavItem to="/return/r_chen" icon={FileText} label="Chen: Return" />
           <NavItem to="/system" icon={Palette} label="Interaction System" />
         </nav>
         <div className="mt-auto flex items-center gap-2 rounded-lg border border-slate-200 p-2">

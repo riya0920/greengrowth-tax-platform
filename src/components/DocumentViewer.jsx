@@ -64,7 +64,7 @@ export default function DocumentViewer({ docId, highlightBox }) {
             </div>
             {highlightBox && (
               <div className="mt-2 text-center text-[11px] text-brand-600">
-                Highlighted: Box {highlightBox} — the exact figure this return line was pulled from
+                Highlighted: Box {highlightBox}, the exact figure this return line was pulled from
               </div>
             )}
           </div>

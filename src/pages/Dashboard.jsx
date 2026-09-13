@@ -75,7 +75,7 @@ export default function Dashboard() {
           <h1 className="text-2xl font-bold">Good morning, Riya</h1>
           <p className="mt-1 text-sm text-ink-500">
             You have <b className="text-ink-900">{needReview} things</b> that
-            need you today. Start at the top — it's already sorted by priority.
+            need you today. Start at the top: it's already sorted by priority.
           </p>
         </div>
         <div className="flex items-center gap-1 rounded-lg border border-slate-200 bg-white p-1 text-sm">
@@ -102,7 +102,7 @@ export default function Dashboard() {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        {/* PRIORITY QUEUE — the answer to "what do I work on now?" */}
+        {/* PRIORITY QUEUE: the answer to "what do I work on now?" */}
         <section className="lg:col-span-2">
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-sm font-semibold text-ink-700">Your priority queue</h2>
@@ -178,13 +178,13 @@ export default function Dashboard() {
             {ranked.length === 0 && (
               <div className="card grid place-items-center gap-2 p-8 text-center text-sm text-ink-500">
                 <CheckCircle2 className="text-verified-500" />
-                Nothing in this filter. Nice — inbox zero.
+                Nothing in this filter. Nice: inbox zero.
               </div>
             )}
           </div>
         </section>
 
-        {/* RIGHT RAIL — returns at a glance */}
+        {/* RIGHT RAIL: returns at a glance */}
         <section>
           <h2 className="mb-2 text-sm font-semibold text-ink-700">Returns you own</h2>
           <div className="space-y-2">

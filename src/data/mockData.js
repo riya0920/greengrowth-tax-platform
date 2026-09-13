@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// MOCK DATA  —  the "quick and dirty" fake backend.
+// MOCK DATA: the "quick and dirty" fake backend.
 // Everything the UI shows (returns, tasks, extracted values, source documents,
 // traceability links, AI confidence + evidence) is hardcoded here. No OCR, no
 // real AI, no server. See README for what's real vs simulated.
@@ -19,7 +19,7 @@ export const DOCUMENTS = {
   d_w2_acme: {
     id: "d_w2_acme",
     type: "W-2",
-    title: "W-2 — Acme Robotics Inc.",
+    title: "W-2: Acme Robotics Inc.",
     filename: "W2_AcmeRobotics_2025.pdf",
     uploadedBy: "client",
     uploadedAt: "2026-02-08",
@@ -35,7 +35,7 @@ export const DOCUMENTS = {
           { box: "3", label: "Social security wages", value: "160,200.00" },
           { box: "4", label: "Social security tax withheld", value: "9,932.40" },
           { box: "5", label: "Medicare wages and tips", value: "148,900.00" },
-          { box: "12a", label: "Code D — 401(k)", value: "6,050.00", key: true },
+          { box: "12a", label: "Code D: 401(k)", value: "6,050.00", key: true },
         ],
       },
     ],
@@ -43,7 +43,7 @@ export const DOCUMENTS = {
   d_w2_side: {
     id: "d_w2_side",
     type: "W-2",
-    title: "W-2 — Northwind Consulting LLC",
+    title: "W-2: Northwind Consulting LLC",
     filename: "W2_Northwind_2025.pdf",
     uploadedBy: "client",
     uploadedAt: "2026-02-09",
@@ -62,7 +62,7 @@ export const DOCUMENTS = {
   d_1099int: {
     id: "d_1099int",
     type: "1099-INT",
-    title: "1099-INT — First Ridge Bank",
+    title: "1099-INT: First Ridge Bank",
     filename: "1099INT_FirstRidge_2025.pdf",
     uploadedBy: "client",
     uploadedAt: "2026-02-10",
@@ -81,7 +81,7 @@ export const DOCUMENTS = {
   d_1099div: {
     id: "d_1099div",
     type: "1099-DIV",
-    title: "1099-DIV — Vanguard Brokerage",
+    title: "1099-DIV: Vanguard Brokerage",
     filename: "1099DIV_Vanguard_2025.pdf",
     uploadedBy: "client",
     uploadedAt: "2026-02-11",
@@ -100,7 +100,7 @@ export const DOCUMENTS = {
   d_mortgage: {
     id: "d_mortgage",
     type: "1098",
-    title: "1098 — Summit Mortgage",
+    title: "1098: Summit Mortgage",
     filename: "1098_Summit_2025.pdf",
     uploadedBy: "client",
     uploadedAt: "2026-02-12",
@@ -148,7 +148,7 @@ export const RETURNS = {
   r_chen: {
     id: "r_chen",
     client: "Jordan & Priya Chen",
-    entity: "1040 — Married Filing Jointly",
+    entity: "1040: Married Filing Jointly",
     taxYear: 2025,
     preparerId: "u_riya",
     stage: "review", // intake | docs | preparation | review | client_signoff | filed
@@ -171,8 +171,8 @@ export const RETURNS = {
         transform: {
           summary: "Sum of Box 1 across 2 W-2 forms",
           steps: [
-            { doc: "d_w2_acme", label: "Acme Robotics — Box 1", amount: 142850 },
-            { doc: "d_w2_side", label: "Northwind Consulting — Box 1", amount: 38400 },
+            { doc: "d_w2_acme", label: "Acme Robotics: Box 1", amount: 142850 },
+            { doc: "d_w2_side", label: "Northwind Consulting: Box 1", amount: 38400 },
           ],
           op: "+",
           result: 181250,
@@ -195,8 +195,8 @@ export const RETURNS = {
         transform: {
           summary: "Sum of Box 2 across 2 W-2 forms",
           steps: [
-            { doc: "d_w2_acme", label: "Acme Robotics — Box 2", amount: 26410 },
-            { doc: "d_w2_side", label: "Northwind Consulting — Box 2", amount: 4120 },
+            { doc: "d_w2_acme", label: "Acme Robotics: Box 2", amount: 26410 },
+            { doc: "d_w2_side", label: "Northwind Consulting: Box 2", amount: 4120 },
           ],
           op: "+",
           result: 30530,
@@ -217,14 +217,14 @@ export const RETURNS = {
         editable: true,
         transform: {
           summary: "1099-INT Box 1, rounded to nearest dollar",
-          steps: [{ doc: "d_1099int", label: "First Ridge Bank — Box 1", amount: 1284.55 }],
+          steps: [{ doc: "d_1099int", label: "First Ridge Bank: Box 1", amount: 1284.55 }],
           op: "round",
           result: 1285,
         },
         sources: [{ doc: "d_1099int", page: 1, box: "1" }],
         reasoning:
           "Read $1,284.55 from the 1099-INT and rounded to $1,285 per IRS whole-dollar rules. Flagged for a look because the scan of the cents was slightly blurry.",
-        warning: "The cents digits were faint on the scan — worth a 2-second confirm.",
+        warning: "The cents digits were faint on the scan: worth a 2-second confirm.",
       }),
       field({
         id: "f_dividends",
@@ -236,7 +236,7 @@ export const RETURNS = {
         editable: true,
         transform: {
           summary: "1099-DIV Box 1a, rounded",
-          steps: [{ doc: "d_1099div", label: "Vanguard — Box 1a", amount: 3942.18 }],
+          steps: [{ doc: "d_1099div", label: "Vanguard: Box 1a", amount: 3942.18 }],
           op: "round",
           result: 3942,
         },
@@ -253,7 +253,7 @@ export const RETURNS = {
         editable: true,
         transform: {
           summary: "1098 Box 1, taken as-is",
-          steps: [{ doc: "d_mortgage", label: "Summit Mortgage — Box 1", amount: 18240 }],
+          steps: [{ doc: "d_mortgage", label: "Summit Mortgage: Box 1", amount: 18240 }],
           op: "=",
           result: 18240,
         },
@@ -270,7 +270,7 @@ export const RETURNS = {
         editable: true,
         transform: {
           summary: "1098 Box 10 (property taxes paid via escrow)",
-          steps: [{ doc: "d_mortgage", label: "Summit Mortgage — Box 10", amount: 9600 }],
+          steps: [{ doc: "d_mortgage", label: "Summit Mortgage: Box 10", amount: 9600 }],
           op: "=",
           result: 9600,
         },
@@ -309,7 +309,7 @@ export const RETURNS = {
   r_alvarez: {
     id: "r_alvarez",
     client: "Marcus Alvarez",
-    entity: "1040 — Single",
+    entity: "1040: Single",
     taxYear: 2025,
     preparerId: "u_riya",
     stage: "preparation",
@@ -318,14 +318,14 @@ export const RETURNS = {
     openItems: 4,
     lowConfidenceCount: 3,
     blocked: true,
-    blockReason: "Waiting on client — missing 1099-B (brokerage sales)",
+    blockReason: "Waiting on client: missing 1099-B (brokerage sales)",
     lastActivity: "2026-03-17T09:05:00",
     fields: [],
   },
   r_okwu: {
     id: "r_okwu",
     client: "Okwu Family Trust",
-    entity: "1041 — Trust",
+    entity: "1041: Trust",
     taxYear: 2025,
     preparerId: "u_dev",
     stage: "review",
@@ -340,7 +340,7 @@ export const RETURNS = {
   r_bello: {
     id: "r_bello",
     client: "Bello Consulting LLC",
-    entity: "1120-S — S-Corp",
+    entity: "1120-S: S-Corp",
     taxYear: 2025,
     preparerId: "u_riya",
     stage: "client_signoff",
@@ -355,7 +355,7 @@ export const RETURNS = {
   r_nakamura: {
     id: "r_nakamura",
     client: "Yuki Nakamura",
-    entity: "1040 — Single",
+    entity: "1040: Single",
     taxYear: 2025,
     preparerId: "u_riya",
     stage: "docs",
@@ -364,14 +364,14 @@ export const RETURNS = {
     openItems: 6,
     lowConfidenceCount: 0,
     blocked: true,
-    blockReason: "Missing documents — 3 requested, 0 received",
+    blockReason: "Missing documents: 3 requested, 0 received",
     lastActivity: "2026-03-12T13:00:00",
     fields: [],
   },
   r_fitzgerald: {
     id: "r_fitzgerald",
     client: "Fitzgerald & Wong",
-    entity: "1040 — Married Filing Jointly",
+    entity: "1040: Married Filing Jointly",
     taxYear: 2025,
     preparerId: "u_dev",
     stage: "filed",
@@ -400,7 +400,7 @@ export function stageIndex(id) {
 }
 
 // ---------------------------------------------------------------------------
-// Tasks — the atomic units of "what should I work on right now" (Challenge 07)
+// Tasks: the atomic units of "what should I work on right now" (Challenge 07)
 // ---------------------------------------------------------------------------
 export const TASKS = [
   {
@@ -443,7 +443,7 @@ export const TASKS = [
     urgency: "high",
     owner: "client",
     dueDate: "2026-03-15",
-    note: "Deadline was 3/15 — follow up today.",
+    note: "Deadline was 3/15: follow up today.",
   },
   {
     id: "t5",

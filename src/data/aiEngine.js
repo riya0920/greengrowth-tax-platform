@@ -10,7 +10,7 @@ import { RETURNS, confidenceBucket } from "./mockData";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Prioritization "logic" for the dashboard (Challenge 07).
-// Real ranking against the mock dataset — deterministic, explainable.
+// Real ranking against the mock dataset: deterministic, explainable.
 export function rankTasks(tasks) {
   const urgencyWeight = { high: 100, medium: 50, low: 10 };
   const today = new Date("2026-03-18");
@@ -38,7 +38,7 @@ export function priorityReason(task) {
   return bits.slice(0, 2).join(" · ") || "routine";
 }
 
-// Fake "explain this field" call — returns the AI's rationale packet.
+// Fake "explain this field" call: returns the AI's rationale packet.
 // In a real system this would hit an LLM; here it's just the pre-baked
 // reasoning attached to the field, wrapped in an async shape.
 export async function explainField(returnId, fieldId) {
@@ -59,7 +59,7 @@ export async function explainField(returnId, fieldId) {
   };
 }
 
-// Fake "re-check after correction" — simulates the AI acknowledging a human edit.
+// Fake "re-check after correction": simulates the AI acknowledging a human edit.
 export async function acknowledgeCorrection(fieldId, oldValue, newValue) {
   await sleep(400);
   return {
@@ -68,7 +68,7 @@ export async function acknowledgeCorrection(fieldId, oldValue, newValue) {
     message:
       newValue === oldValue
         ? "Value confirmed. I've marked this as human-verified."
-        : `Got it — updated to ${newValue.toLocaleString()}. I've recorded this as a human correction and won't override it.`,
+        : `Got it: updated to ${newValue.toLocaleString()}. I've recorded this as a human correction and won't override it.`,
     learn:
       "In production I'd use this correction as a signal to improve extraction on similar documents.",
   };

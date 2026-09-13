@@ -123,7 +123,7 @@ export default function ReturnReview() {
 
       {/* THREE PANES: fields · document · AI */}
       <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[minmax(280px,340px)_1fr_minmax(300px,360px)]">
-        {/* Pane 1 — return line items */}
+        {/* Pane 1: return line items */}
         <div className="min-h-0 overflow-auto border-r border-slate-200 bg-white">
           <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-ink-500">
             Return line items
@@ -164,12 +164,12 @@ export default function ReturnReview() {
           </div>
         </div>
 
-        {/* Pane 2 — source document, highlighted to the exact box */}
+        {/* Pane 2: source document, highlighted to the exact box */}
         <div className="min-h-0 overflow-hidden border-r border-slate-200 bg-slate-100">
           <DocumentViewer docId={source?.doc} highlightBox={source?.box} />
         </div>
 
-        {/* Pane 3 — AI trust + correction */}
+        {/* Pane 3: AI trust + correction */}
         <div className="min-h-0 overflow-hidden bg-white">
           {active && (
             <AiPanel

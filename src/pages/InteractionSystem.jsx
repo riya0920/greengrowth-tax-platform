@@ -56,7 +56,7 @@ export default function InteractionSystem() {
       <h1 className="mt-1 text-2xl font-bold">Clickable vs. Editable</h1>
       <p className="mt-1 max-w-2xl text-sm text-ink-500">
         A tax return mixes AI output, extracted data, calculations, reviewer notes, and client
-        answers on one screen — some editable, some awaiting approval, some permanently locked. This
+        answers on one screen: some editable, some awaiting approval, some permanently locked. This
         is the single visual language that keeps all of it legible. The states here are the exact
         same ones driving the live{" "}
         <Link to="/return/r_chen" className="text-brand-600 underline">
@@ -79,7 +79,7 @@ export default function InteractionSystem() {
           <AffordanceField state="verified" label="Wages (1a)" prefix="$" value={181250} />
           <AffordanceField state="ai" label="Taxable interest (2b)" prefix="$" value={1285} />
           <AffordanceField state="editable" label="Charitable gifts (Sch A)" prefix="$" value={2400} />
-          <AffordanceField state="locked" label="AGI (11) — calculated" prefix="$" value={186477} />
+          <AffordanceField state="locked" label="AGI (11): calculated" prefix="$" value={186477} />
         </Context>
 
         <Context
@@ -90,7 +90,7 @@ export default function InteractionSystem() {
           <AffordanceField state="editable" label="Filing status" value="MFJ" />
           <AffordanceField state="editable" label="Dependents" value={2} />
           <AffordanceField state="approval" label="Home office claim" value="Yes" />
-          <AffordanceField state="locked" label="SSN — on file" value="•••-••-4821" />
+          <AffordanceField state="locked" label="SSN: on file" value="•••-••-4821" />
         </Context>
 
         <Context
@@ -108,7 +108,7 @@ export default function InteractionSystem() {
       <div className="mt-4 card border-ai-100 bg-ai-50/40 p-4 text-sm">
         <div className="font-semibold text-ai-600">Try it</div>
         <p className="mt-1 text-ink-500">
-          The dashed <b className="text-ink-700">Editable</b> fields above are genuinely editable —
+          The dashed <b className="text-ink-700">Editable</b> fields above are genuinely editable:
           click one and type. The grey <b className="text-ink-700">Read-only</b> fields refuse
           interaction (see the <code className="text-xs">not-allowed</code> cursor). The affordance
           isn't decoration: what looks interactive actually is.

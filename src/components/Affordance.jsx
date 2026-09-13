@@ -13,7 +13,7 @@ import { Sparkles, ShieldCheck, Pencil, Lock, MousePointerClick, Stamp } from "l
 export const INTERACTION = {
   clickable: {
     label: "Clickable",
-    hint: "Opens something — navigates or expands",
+    hint: "Opens something: navigates or expands",
     Icon: MousePointerClick,
     chip: "bg-brand-50 text-brand-600",
     box: "bg-white border border-slate-200 border-l-2 border-l-brand-400 hover:bg-brand-50 hover:border-l-brand-600 cursor-pointer",
@@ -29,7 +29,7 @@ export const INTERACTION = {
   },
   ai: {
     label: "AI-generated",
-    hint: "Produced by the model — review before trusting",
+    hint: "Produced by the model: review before trusting",
     Icon: Sparkles,
     chip: "bg-ai-50 text-ai-600",
     box: "bg-ai-50/40 border border-ai-100 border-l-2 border-l-ai-500 hover:bg-ai-50 cursor-pointer",
@@ -37,7 +37,7 @@ export const INTERACTION = {
   },
   verified: {
     label: "Verified",
-    hint: "A human confirmed this — safe to rely on",
+    hint: "A human confirmed this: safe to rely on",
     Icon: ShieldCheck,
     chip: "bg-verified-50 text-verified-600",
     box: "bg-verified-50/50 border border-verified-100 border-l-2 border-l-verified-500",
@@ -53,7 +53,7 @@ export const INTERACTION = {
   },
   locked: {
     label: "Read-only",
-    hint: "Calculated or filed — can't be changed here",
+    hint: "Calculated or filed: can't be changed here",
     Icon: Lock,
     chip: "bg-slate-100 text-ink-500",
     box: "bg-slate-100/70 border border-slate-200 text-ink-500 cursor-not-allowed",
@@ -64,7 +64,7 @@ export const INTERACTION = {
 const fmt = (v) => (typeof v === "number" ? v.toLocaleString("en-US") : v);
 
 // A single value rendered with the affordance for its state. Editable ones
-// actually become an input on click, so the affordance is honest — what looks
+// actually become an input on click, so the affordance is honest: what looks
 // editable IS editable.
 export function AffordanceField({ state, label, value, prefix = "", onChange }) {
   const s = INTERACTION[state];
